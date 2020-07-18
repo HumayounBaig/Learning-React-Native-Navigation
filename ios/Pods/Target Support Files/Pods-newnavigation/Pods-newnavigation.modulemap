@@ -1,0 +1,6 @@
+module Pods_newnavigation {
+  umbrella header "Pods-newnavigation-umbrella.h"
+
+  export *
+  module * { export * }
+}
