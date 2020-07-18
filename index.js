@@ -61,11 +61,11 @@ HomeScreen.options = {
       color: 'white'
     },
     background: {
-      color: 'red'
+      color: 'blue'
     }
   },
   bottomTab: {
-    text: 'Home'
+    text: 'Home',
   }
 }
 
@@ -76,8 +76,8 @@ SettingsScreen.options = {
       color: 'white'
     },
     background: {
-      color: 'red'
-    }
+      color: 'green'
+    },
   },
   bottomTab: {
     text: 'Settings'
@@ -86,40 +86,73 @@ SettingsScreen.options = {
 
 Navigation.registerComponent('Home', () => HomeScreen);
 Navigation.registerComponent('Settings', () => SettingsScreen);
-
+Navigation.registerComponent('Login', () => LoginScreen);
 Navigation.registerComponent('com.myApp.WelcomeScreen', () => App);
-Navigation.events().registerAppLaunchedListener(() => {
-  Navigation.setRoot({
-    root: {
-      bottomTabs: {
-        children: [
-          {
-            stack: {
-              children:[
-                {
-                  component: {
-                    name: 'Home'
-                  }
-                }
-              ]
-            }
-          },
-          {
-            stack: {
-              children:[
-                {
-                  component: {
-                    name: 'Settings'
-                  }
-                }
-              ]
-            }
-          },
-        ]
-      }
+
+Navigation.setDefaultOptions({
+  statusBar: {
+    backgroundColor: '#4d089a'
+  },
+  topBar: {
+    title: {
+      color: 'white'
+    },
+    backButton: {
+      color: 'white'
+    },
+    background: {
+      color: '#4d089a'
     }
-  });
+  },
+  bottomTab: {
+    fontSize: 14,
+    selectedFontSize: 14
+  }
 });
+
+const mainRoot = {
+  root: {
+    bottomTabs: {
+      children: [
+        {
+          stack: {
+            children: [
+              {
+                component: {
+                  name: 'Home'
+                }
+              },
+            ]
+          }
+        },
+        {
+          stack: {
+            children: [
+              {
+                component: {
+                  name: 'Settings'
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+};
+
+const loginRoot = {
+  root: {
+    component: {
+      name: 'Login'
+    }
+  }
+};
+
+Navigation.events().registerAppLaunchedListener(async () => {
+  Navigation.setRoot(loginRoot);
+});
+
 
 const styles = StyleSheet.create({
   root: {
