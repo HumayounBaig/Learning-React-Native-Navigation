@@ -6,6 +6,7 @@ import { Navigation } from "react-native-navigation";
 import { View, StyleSheet, Text, Button } from 'react-native';
 import App from './App';
 import { name as appName } from './app.json';
+import LoginScreen from './components/views/Login'
 
 const HomeScreen = (props) => {
   return (
@@ -35,24 +36,11 @@ const HomeScreen = (props) => {
 
 const SettingsScreen = () => {
   return (
-    <View style={[styles.root, {backgroundColor: 'gray'}]}>
+    <View style={[styles.root]}>
       <Text>Settings Screen</Text>
     </View>
   );
 }
-
-const LoginScreen = () => {
-  return (
-    <View style={styles.root}>
-      <Button
-        title='Login'
-        color='#710ce3'
-        onPress={() => Navigation.setRoot(mainRoot)}
-      />
-    </View>
-  );
-};
-
 
 HomeScreen.options = {
   topBar: {
@@ -77,6 +65,9 @@ SettingsScreen.options = {
     },
     background: {
       color: 'green'
+    },
+    backButton: {
+      color: 'white'
     },
   },
   bottomTab: {
@@ -144,7 +135,10 @@ const mainRoot = {
 const loginRoot = {
   root: {
     component: {
-      name: 'Login'
+      name: 'Login',
+      passProps: {
+        mainRoot: mainRoot,
+      }
     }
   }
 };
