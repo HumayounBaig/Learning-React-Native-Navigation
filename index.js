@@ -7,32 +7,7 @@ import { View, StyleSheet, Text, Button } from 'react-native';
 import App from './App';
 import { name as appName } from './app.json';
 import LoginScreen from './components/views/Login'
-
-const HomeScreen = (props) => {
-  return (
-    <View style={styles.root}>
-      <Text>Hello React Native Navigation 👋</Text>
-      <Button
-        title='Settings'
-        color='green'
-        onPress={() => {
-          Navigation.push(props.componentId, {
-            component: {
-              name: 'Settings',
-              options: {
-                topBar: {
-                  title: {
-                    text: 'Settings'
-                  }
-                }
-              }
-            }
-          })
-        }}
-      />
-    </View>
-  );
-};
+import HomeScreen from './components/views/Main';
 
 const SettingsScreen = () => {
   return (
@@ -40,21 +15,6 @@ const SettingsScreen = () => {
       <Text>Settings Screen</Text>
     </View>
   );
-}
-
-HomeScreen.options = {
-  topBar: {
-    title: {
-      text: 'Main',
-      color: 'white'
-    },
-    background: {
-      color: 'blue'
-    }
-  },
-  bottomTab: {
-    text: 'Home',
-  }
 }
 
 SettingsScreen.options = {
@@ -67,8 +27,10 @@ SettingsScreen.options = {
       color: 'green'
     },
     backButton: {
-      color: 'white'
-    },
+      color: 'white',
+      showTitle: false
+    }, 
+
   },
   bottomTab: {
     text: 'Settings'
